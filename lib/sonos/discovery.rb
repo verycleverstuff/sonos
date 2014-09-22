@@ -38,6 +38,7 @@ module Sonos
     # Find all of the Sonos devices on the network
     # @return [Array] an array of TopologyNode objects
     def topology
+      @first_device_ip = IPSocket::getaddress('sonos-office.vcs')
       self.discover unless @first_device_ip
       return [] unless @first_device_ip
 
